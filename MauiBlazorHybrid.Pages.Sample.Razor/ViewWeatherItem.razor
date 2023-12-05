@@ -1,0 +1,47 @@
+﻿@page "/weather/view/{row:int}"
+
+<h1>View Weather</h1>
+
+<p>You've passed data from Razor to MAUI to Razor!</p>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <td class="font-bold">From Row No.</td>
+            <td>@Row</td>
+        </tr>
+        <tr>
+            <td class="font-bold">Date</td>
+            <td>@Date.ToShortDateString()</td>
+        </tr>
+        <tr>
+            <td class="font-bold">Temperature (C)</td>
+            <td>@TemperatureC</td>
+        </tr>
+        <tr>
+            <td class="font-bold">Temperature (F)</td>
+            <td>@TemperatureF</td>
+        </tr>
+        <tr>
+            <td class="font-bold">Summary</td>
+            <td>@Summary</td>
+        </tr>
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public int Row { get; set; }
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public DateTime Date { get; set; }
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public int TemperatureC { get; set; }
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public int TemperatureF { get; set; }
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public string Summary { get; set; } = null!;
+}
