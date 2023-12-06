@@ -8,6 +8,7 @@ namespace MauiBlazorHybridPages
     public class HybridContentPage : ContentPage, IQueryAttributable, IDisposable
     {
         private NavigationManagerInterceptor _navigationInterceptor = null!;
+        private NavigationManager _navigationManager = null!;
 
         private BlazorWebView _webView = null!;
         private Action? _stateHasChanged;
@@ -66,6 +67,7 @@ namespace MauiBlazorHybridPages
         private void OnNavigationInitialized(NavigationManager navigationManager)
         {
             _navigationInterceptor.Attach(navigationManager);
+            _navigationManager = navigationManager;
         }
 
         private static BlazorWebView SetupWebView(
@@ -89,6 +91,11 @@ namespace MauiBlazorHybridPages
             });
 
             return webView;
+        }
+
+        public void Refresh()
+        {
+            _navigationManager.Refresh();
         }
 
         public void Dispose()
