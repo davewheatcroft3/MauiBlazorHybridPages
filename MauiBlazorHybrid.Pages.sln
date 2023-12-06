@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiBlazorHybrid.Pages.Sample", "MauiBlazorHybrid.Pages.Sample\MauiBlazorHybrid.Pages.Sample.csproj", "{59A988D5-70B0-4586-9547-22BB9F05F8E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBlazorHybridPages.Sample", "Sample\MauiBlazorHybridPages.Sample\MauiBlazorHybridPages.Sample.csproj", "{59A988D5-70B0-4586-9547-22BB9F05F8E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiBlazorHybrid.Pages.Sample.Razor", "MauiBlazorHybrid.Pages.Sample.Razor\MauiBlazorHybrid.Pages.Sample.Razor.csproj", "{30FFDA04-DDA9-45C4-92D7-663A2A6773E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBlazorHybridPages.Sample.Razor", "Sample\MauiBlazorHybridPages.Sample.Razor\MauiBlazorHybridPages.Sample.Razor.csproj", "{30FFDA04-DDA9-45C4-92D7-663A2A6773E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiBlazorHybrid.Pages", "MauiBlazorHybrid.Pages\MauiBlazorHybrid.Pages.csproj", "{C9F0A2B7-378F-43A1-A0A4-27B7FB5EE40A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBlazorHybridPages", "MauiBlazorHybridPages\MauiBlazorHybridPages.csproj", "{C9F0A2B7-378F-43A1-A0A4-27B7FB5EE40A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{2E51FAC9-6704-4C37-8EC7-907F986B6395}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{59A988D5-70B0-4586-9547-22BB9F05F8E1} = {2E51FAC9-6704-4C37-8EC7-907F986B6395}
+		{30FFDA04-DDA9-45C4-92D7-663A2A6773E3} = {2E51FAC9-6704-4C37-8EC7-907F986B6395}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8F74062A-7A91-4559-ACD0-6ED2599C9E7B}

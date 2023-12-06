@@ -6,7 +6,7 @@ Helper library for minimizing Razor in your hybrid MAUI app project
 ### Required Steps
 1. Install Nuget package
 ```
-Install-Package MauiBlazorHybrid.Pages
+Install-Package MauiBlazorHybridPages
 ```
 
 2. In your Program.cs add
