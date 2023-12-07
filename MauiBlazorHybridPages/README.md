@@ -1,12 +1,13 @@
 # MAUI Blazor Hybrid Pages
-Helper library for minimizing Razor in your hybrid MAUI app project
+Helper library for minimizing Razor in your hybrid MAUI app project.
+This allows you to have a central Razor class library for sharing your Razor pages accross your web project and your MAUI project easily.
 
 ## Installation
 
 ### Required Steps
 1. Install Nuget package
 ```
-Install-Package MauiBlazorHybridPages
+Install-Package HybridPages.MauiBlazor
 ```
 
 2. In your Program.cs add
