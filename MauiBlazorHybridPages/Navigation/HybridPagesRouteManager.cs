@@ -6,9 +6,9 @@
     {
         private List<RouteMapping> _routeRegistry = new();
 
-        public void Register(string appShellRouteName, string razorTemplateRoute)
+        public void Register(string appShellRouteName, string razorTemplateRoute, string? appShellRoutePrefix = null)
         {
-            _routeRegistry.Add(new RouteMapping(appShellRouteName, razorTemplateRoute));
+            _routeRegistry.Add(new RouteMapping(appShellRouteName, razorTemplateRoute, appShellRoutePrefix));
         }
 
         public MatchedRoute? MatchFromRazorRoute(string razorStartupRoute)
@@ -88,18 +88,23 @@
                     continue;
                 }
 
-                // Add on query parameters
-                queryParameters = queryParameters.Replace("?", "");
-                var querySplit = queryParameters.Split("&");
-                foreach (var queryParameterPair in querySplit)
+                if (!string.IsNullOrEmpty(queryParameters))
                 {
-                    var queryParameterSplit = queryParameterPair.Split("=");
-                    var variableName = queryParameterSplit[0];
-                    var variableValue = queryParameterSplit[1];
-                    variables.Add(variableName, variableValue);
+                    // Add on query parameters
+                    queryParameters = queryParameters.Replace("?", "");
+                    var querySplit = queryParameters.Split("&");
+                    foreach (var queryParameterPair in querySplit)
+                    {
+                        var queryParameterSplit = queryParameterPair.Split("=");
+                        var variableName = queryParameterSplit[0];
+                        var variableValue = queryParameterSplit[1];
+                        variables.Add(variableName, variableValue);
+                    }
                 }
 
-                return new MatchedRoute(registeredRoute.AppShellRouteName, variables);
+                return new MatchedRoute(
+                    $"{registeredRoute.AppShellRoutePrefix ?? string.Empty}{registeredRoute.AppShellRouteName}",
+                    variables);
             }
 
             return null;
@@ -153,6 +158,7 @@
 
         private record RouteMapping(
             string AppShellRouteName,
-            string RazorTemplateRoute);
+            string RazorTemplateRoute,
+            string? AppShellRoutePrefix);
     }
 }

@@ -28,14 +28,7 @@ namespace MauiBlazorHybridPages.Navigation
 
         private async Task NavigateTo(string route, Dictionary<string, object> parameters)
         {
-            if (parameters.Count == 0)
-            {
-                await Shell.Current.GoToAsync($"//{route}");
-            }
-            else
-            {
-                await Shell.Current.GoToAsync(route, parameters);
-            }
+            await Shell.Current.GoToAsync(route, parameters);
         }
 
         public void Dispose()

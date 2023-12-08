@@ -33,7 +33,7 @@ namespace MauiBlazorHybridPages.Builders
         public string? AppShellRouteName { get; set; }
         public string RazorStartPath { get; set; }
         public string? RazorRouteTemplatePath { get; set; }
-        public bool RegisterRoute { get; set; }
+        public AppShellNavigationOptions AppShellNavigationOptions { get; set; } = new();
         public Action<BlazorWebViewPageOptions>? ConfigureWebViewOptions { get; set; }
 
         internal PageBuilderDescriptor(
@@ -129,7 +129,7 @@ namespace MauiBlazorHybridPages.Builders
 
             if (descriptor.AppShellRouteName != null)
             {
-                if (descriptor.RegisterRoute)
+                if (descriptor.AppShellNavigationOptions.RegisterAppShellRoute)
                 {
 #pragma warning disable CA1416 // Validate platform compatibility
                     Routing.RegisterRoute(descriptor.AppShellRouteName, descriptor.Type);
@@ -138,7 +138,10 @@ namespace MauiBlazorHybridPages.Builders
 
                 if (descriptor.RazorRouteTemplatePath != null)
                 {
-                    _routeManager.Register(descriptor.AppShellRouteName, descriptor.RazorRouteTemplatePath);
+                    _routeManager.Register(
+                        descriptor.AppShellRouteName,
+                        descriptor.RazorRouteTemplatePath,
+                        descriptor.AppShellNavigationOptions.PrefixAppShellRoute);
                 }
             }
         }
