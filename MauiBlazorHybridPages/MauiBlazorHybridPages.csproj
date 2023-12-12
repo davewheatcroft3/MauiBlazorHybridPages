@@ -28,8 +28,8 @@
     <PackageId>HybridPages.MauiBlazorHybrid</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
-    <Version>1.0.0</Version>
-    <PackageVersion>1.0.0</PackageVersion>
+    <Version>1.0.1</Version>
+    <PackageVersion>1.0.1</PackageVersion>
 	</PropertyGroup>
   <ItemGroup>
     <None Include="..\README.md">
