@@ -31,6 +31,11 @@ namespace MauiBlazorHybridPages
             }
         }
 
+        protected virtual View SetPageRootContent(BlazorWebView webView)
+        {
+            return webView;
+        }
+
         internal void AddHybridWebView(
             IServiceProvider serviceProvider,
             string startupRoute,
@@ -56,7 +61,8 @@ namespace MauiBlazorHybridPages
                 startupRoute,
                 webViewOptions.ComponentType ?? baseOptions.ComponentType,
                 routeComponentParameters);
-            Content = _webView = webView;
+            _webView = webView;
+            Content = SetPageRootContent(webView);
         }
 
         private void OnInitialized(Action stateHasChanged)
