@@ -14,9 +14,16 @@
         public string? PrefixAppShellRoute { get; set; }
     }
 
-
     public interface IPageRouteBuilder
     {
+        /// <summary>
+        /// If your startup razor path is not static (i.e. has parameters) and you aren't navigating to this page via the navigation manager
+        /// (e.g. its a an AppShell Shell item in xaml), use this method to initially set the startup route.
+        /// </summary>
+        /// <param name="setRouteFunc">A function which expects a dictionary of parameters matching the pages route definition.</param>
+        /// <returns>The builder instance,</returns>
+        IPageRouteBuilder WithDynamicStartupRoute(Func<IServiceProvider, Task<IDictionary<string, object>>> setRouteFunc);
+
         /// <summary>
         /// Register the page being built with the App Shell.
         /// NOTE: this will call Microsoft.Maui.Controls.Routing.RegisterRoute for the route name and page type.
@@ -44,6 +51,13 @@
         {
             _pageBuilderDescriptor = pageBuilderDescriptor;
         }
+
+        public IPageRouteBuilder WithDynamicStartupRoute(Func<IServiceProvider, Task<IDictionary<string, object>>> setRouteFunc)
+        {
+            _pageBuilderDescriptor.SetRouteOnGenerate = setRouteFunc;
+            return this;
+        }
+
         public void WithAppShellNavigatableRoute(string appShellRouteName, Action<AppShellNavigationOptions>? appShellNavigationOptions = null)
         {
             _pageBuilderDescriptor.AppShellRouteName = appShellRouteName;

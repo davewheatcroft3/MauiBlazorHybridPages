@@ -33,6 +33,7 @@ namespace MauiBlazorHybridPages.Builders
         public string? AppShellRouteName { get; set; }
         public string RazorStartPath { get; set; }
         public string? RazorRouteTemplatePath { get; set; }
+        public Func<IServiceProvider, Task<IDictionary<string, object>>>? SetRouteOnGenerate { get; set; }
         public AppShellNavigationOptions AppShellNavigationOptions { get; set; } = new();
         public Action<BlazorWebViewPageOptions>? ConfigureWebViewOptions { get; set; }
 
@@ -124,6 +125,7 @@ namespace MauiBlazorHybridPages.Builders
                     descriptor.Title,
                     descriptor.RazorStartPath,
                     descriptor.RazorRouteTemplatePath,
+                    descriptor.SetRouteOnGenerate,
                     descriptor.ConfigureWebViewOptions),
                     descriptor.ServiceLifetime));
 
